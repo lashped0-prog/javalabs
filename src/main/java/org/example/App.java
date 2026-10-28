@@ -2,43 +2,28 @@ package org.example;
 
 public class App {
     public static void main(String[] args) {
-        RoundTable table = new RoundTable(1.2, Materials.WOOD);
-        System.out.println("Стол: " + table);
-        System.out.printf("Площадь стола: %.4f м2 %n", table.area());
+        Artist[] artists = new Artist[5];
 
-        Planet[] planets = {
-                new Planet("Меркурий", 4879, 57.9),
-                new Planet("Венера", 12104, 108.2),
-                new Planet("Земля", 12742, 149.6),
-                new Planet("Марс", 6779, 227.9),
-                new Planet("Юпитер", 139820, 778.6),
-                new Planet("Сатурн", 116460, 1433.5)
-        };
-        Planet maxDiameter = planets[0];
-        Planet maxDistance = planets[0];
-        for (Planet p : planets) {
-            if (p.getDiameter() > maxDiameter.getDiameter()) {
-                maxDiameter = p;
-            }
-            if (p.getDistanceFromSun() > maxDistance.getDistanceFromSun()) {
-                maxDistance = p;
-            }
-        }
-        System.out.println("Планета с максимальным диаметром: " + maxDiameter);
-        System.out.println("Планета с максимальным расстоянием от Солнца: " + maxDistance);
-        Employee[] employees = {
-                new Employee("Иван Иванов", Education.PHD),
-                new Employee("Канье Вест", Education.MASTER),
-                new Employee("Алексей Грудино", Education.BACHELOR),
-                new Employee("Валерий Альбертович", Education.PHD),
-                new Employee("Олег Тигр", Education.SCHOOL)
-        };
+        artists[0] = new Singer("Анна Петрова", 28, "поп", "сопрано");
+        artists[1] = new Singer("Игорь Смирнов", 35, "рок", "баритон");
+        artists[2] = new Singer("Мария Иванова", 22, "джаз", "альт");
 
-        System.out.println("Сотрудники с образованием PHD:");
-        for (Employee e : employees) {
-            if (e.getEducation() == Education.PHD) {
-                System.out.println(e);
-            }
+        artists[3] = new Dancer("Олег Кузнецов", 30, "современный", "хип-хоп");
+        artists[4] = new Dancer("Елена Соколова", 26, "классический", "балет");
+
+        System.out.println("Все артисты");
+        for (Artist a : artists) {
+            a.displayInfo();
+            a.perform();
+            System.out.println();
         }
-    }
+
+        System.out.println("Уникальные методы");
+        for (Artist a : artists) {
+            if (a instanceof Singer) {
+                ((Singer) a).singSong();
+            } else if (a instanceof Dancer) {
+                ((Dancer) a).choreograph();
+            }
+        }    }
 }
