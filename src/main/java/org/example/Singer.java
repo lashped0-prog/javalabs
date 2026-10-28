@@ -1,33 +1,59 @@
 package org.example;
 
-public class Singer extends Artist {
-    private String voiceType;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Singer(String name, int age, String genre, String voiceType) {
-        super(name, age, genre);
-        this.voiceType = voiceType;
+public class Singer implements Performer, Awardable {
+    private String name;
+    private String genre;
+    private List<String> awards;
+
+    public Singer(String name, String genre) {
+        this.name = name;
+        this.genre = genre;
+        this.awards = new ArrayList<>();
     }
 
-    public String getVoiceType() {
-        return voiceType;
+    public String getName() {
+        return name;
     }
 
-    public void setVoiceType(String voiceType) {
-        this.voiceType = voiceType;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     @Override
     public void perform() {
-        System.out.println(getName() + " поет песню (голос: " + voiceType + ")");
-    }
-
-    public void singSong() {
-        System.out.println(getName() + " исполняет песню в жанре " + getGenre());
+        System.out.println(name + " поет песню в жанре " + genre);
     }
 
     @Override
-    public void displayInfo() {
-        super.displayInfo();
-        System.out.println("Тип голоса: " + voiceType);
+    public String getGenre() {
+        return genre;
+    }
+
+    @Override
+    public String[] getAwards() {
+        return awards.toArray(new String[0]);
+    }
+
+    @Override
+    public void addAward(String award) {
+        awards.add(award);
+    }
+
+    @Override
+    public int getAwardsCount() {
+        return awards.size();
+    }
+
+    @Override
+    public String toString() {
+        return "Singer{name='" + name + "', genre='" + genre +
+                "', awards=" + awards + "}";
     }
 }
