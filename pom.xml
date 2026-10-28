@@ -8,6 +8,14 @@
   <version>1.0-SNAPSHOT</version>
 
   <name>lab8</name>
+  <artifactId>lab7</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>lab7</name>
+  <artifactId>lab6</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>lab6</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
